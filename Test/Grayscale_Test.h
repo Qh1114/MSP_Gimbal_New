@@ -1,0 +1,8 @@
+#ifndef __GRAYSCALE_TEST_H
+#define __GRAYSCALE_TEST_H
+
+void Grayscale_Test1(void);
+void Grayscale_Test2(void);
+void Grayscale_Test3(void);
+
+#endif
