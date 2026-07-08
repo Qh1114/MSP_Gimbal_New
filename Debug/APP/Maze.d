@@ -1,7 +1,7 @@
 # FIXED
 
 APP/Maze.o: ../APP/Maze.c ../APP/Maze.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -85,10 +85,10 @@ APP/Maze.o: ../APP/Maze.c ../APP/Maze.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/tb6612.h ../APP/Drive.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/tb6612.h ../APP/Drive.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h
 ../APP/Maze.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -172,6 +172,6 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/tb6612.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/tb6612.h:
 ../APP/Drive.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h:

@@ -7,8 +7,11 @@ SHELL = cmd.exe
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Middle/Bat.c \
+../Middle/Buzzer.c \
+../Middle/Gimbal_Send.c \
 ../Middle/IMU.c \
 ../Middle/Key.c \
+../Middle/LED.c \
 ../Middle/Motor.c \
 ../Middle/Servo.c \
 ../Middle/Uart_Data.c \
@@ -16,8 +19,11 @@ C_SRCS += \
 
 C_DEPS += \
 ./Middle/Bat.d \
+./Middle/Buzzer.d \
+./Middle/Gimbal_Send.d \
 ./Middle/IMU.d \
 ./Middle/Key.d \
+./Middle/LED.d \
 ./Middle/Motor.d \
 ./Middle/Servo.d \
 ./Middle/Uart_Data.d \
@@ -25,8 +31,11 @@ C_DEPS += \
 
 OBJS += \
 ./Middle/Bat.o \
+./Middle/Buzzer.o \
+./Middle/Gimbal_Send.o \
 ./Middle/IMU.o \
 ./Middle/Key.o \
+./Middle/LED.o \
 ./Middle/Motor.o \
 ./Middle/Servo.o \
 ./Middle/Uart_Data.o \
@@ -34,8 +43,11 @@ OBJS += \
 
 OBJS__QUOTED += \
 "Middle\Bat.o" \
+"Middle\Buzzer.o" \
+"Middle\Gimbal_Send.o" \
 "Middle\IMU.o" \
 "Middle\Key.o" \
+"Middle\LED.o" \
 "Middle\Motor.o" \
 "Middle\Servo.o" \
 "Middle\Uart_Data.o" \
@@ -43,8 +55,11 @@ OBJS__QUOTED += \
 
 C_DEPS__QUOTED += \
 "Middle\Bat.d" \
+"Middle\Buzzer.d" \
+"Middle\Gimbal_Send.d" \
 "Middle\IMU.d" \
 "Middle\Key.d" \
+"Middle\LED.d" \
 "Middle\Motor.d" \
 "Middle\Servo.d" \
 "Middle\Uart_Data.d" \
@@ -52,8 +67,11 @@ C_DEPS__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../Middle/Bat.c" \
+"../Middle/Buzzer.c" \
+"../Middle/Gimbal_Send.c" \
 "../Middle/IMU.c" \
 "../Middle/Key.c" \
+"../Middle/LED.c" \
 "../Middle/Motor.c" \
 "../Middle/Servo.c" \
 "../Middle/Uart_Data.c" \

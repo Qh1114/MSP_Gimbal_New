@@ -1,7 +1,7 @@
 # FIXED
 
 Test/Grayscale_Test.o: ../Test/Grayscale_Test.c ../Test/Grayscale_Test.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Grayscale.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Grayscale.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -85,11 +85,11 @@ Test/Grayscale_Test.o: ../Test/Grayscale_Test.c ../Test/Grayscale_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Grayscale_Signal.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Grayscale_Signal.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h
 ../Test/Grayscale_Test.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Grayscale.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Grayscale.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -173,6 +173,6 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Grayscale_Signal.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Grayscale_Signal.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:

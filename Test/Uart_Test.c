@@ -61,3 +61,11 @@ void Uart_Test4(void)
         }
     }
 }
+
+void Uart_Test5(void)
+{
+    Uart_Gimbal_Send_String("Hello Gimbal\n");
+    while(1)
+    {
+    }
+}

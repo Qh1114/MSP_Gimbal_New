@@ -84,15 +84,17 @@ HardWare/Interrupt.o: ../HardWare/Interrupt.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/my_vl53l1x.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/my_vl53l1x.h \
  ../HardWare/Usart.h ../HardWare/ADC.h ../HardWare/Encoder.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Bat.h ../HardWare/Delay.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Motor.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/PID.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Bat.h ../HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Motor.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/PID.h \
  ../HardWare/multi_button.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Grayscale_Signal.h \
- ../HardWare/icm42688.h C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Drive.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Grayscale_Signal.h \
+ ../HardWare/icm42688.h C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Buzzer.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/LED.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -176,16 +178,18 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/my_vl53l1x.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/my_vl53l1x.h:
 ../HardWare/Usart.h:
 ../HardWare/ADC.h:
 ../HardWare/Encoder.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Bat.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Bat.h:
 ../HardWare/Delay.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Motor.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/PID.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Motor.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/PID.h:
 ../HardWare/multi_button.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Grayscale_Signal.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Grayscale_Signal.h:
 ../HardWare/icm42688.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Drive.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Buzzer.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/LED.h:

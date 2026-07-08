@@ -1,8 +1,8 @@
 # FIXED
 
 Test/Servo_Test.o: ../Test/Servo_Test.c ../Test/Servo_Test.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Servo.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Servo.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -87,8 +87,8 @@ Test/Servo_Test.o: ../Test/Servo_Test.c ../Test/Servo_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h
 ../Test/Servo_Test.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Servo.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Servo.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:

@@ -45,8 +45,11 @@ ORDERED_OBJS += \
 "./HardWare/vl53l1x/platform/vl53l1_platform.o" \
 "./HardWare/vl53l1x/platform/vl53l1x.o" \
 "./Middle/Bat.o" \
+"./Middle/Buzzer.o" \
+"./Middle/Gimbal_Send.o" \
 "./Middle/IMU.o" \
 "./Middle/Key.o" \
+"./Middle/LED.o" \
 "./Middle/Motor.o" \
 "./Middle/Servo.o" \
 "./Middle/Uart_Data.o" \
@@ -56,11 +59,14 @@ ORDERED_OBJS += \
 "./Middle/Fusion/FusionCompass.o" \
 "./Task/Menu.o" \
 "./Test/ADC_Test.o" \
+"./Test/Buzzer_Test.o" \
 "./Test/Drive_Test.o" \
 "./Test/Encoder_Test.o" \
+"./Test/Gimbal_Test.o" \
 "./Test/Grayscale_Test.o" \
 "./Test/ICM_Test.o" \
 "./Test/Key_Test.o" \
+"./Test/LED_Test.o" \
 "./Test/Maze_Test.o" \
 "./Test/Motor_Test.o" \
 "./Test/OLED_Test.o" \
@@ -200,16 +206,16 @@ all: $(OBJS) $(GEN_CMDS)
 # Tool invocations
 MSP_Car_1.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Arm Linker: "$@"'
-	"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -gdwarf-3 -Wall -Wl,-m"MSP_Car_1.map" -Wl,-i"C:/TI/mspm0_sdk_2_10_00_04/source" -Wl,-i"C:/Users/Qh/Desktop/ccs/MSP_Car_1" -Wl,-i"C:/Users/Qh/Desktop/ccs/MSP_Car_1/Debug/syscfg" -Wl,-i"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="MSP_Car_1_linkInfo.xml" -Wl,--rom_model -o "MSP_Car_1.out" $(ORDERED_OBJS)
+	"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O0 -gdwarf-3 -Wall -Wl,-m"MSP_Car_1.map" -Wl,-i"C:/TI/mspm0_sdk_2_10_00_04/source" -Wl,-i"C:/Users/Qh/Desktop/ccs2/MSP_Car_1" -Wl,-i"C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Debug/syscfg" -Wl,-i"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="MSP_Car_1_linkInfo.xml" -Wl,--rom_model -o "MSP_Car_1.out" $(ORDERED_OBJS)
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
 	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "main.o" "APP\Drive.o" "APP\Grayscale_Signal.o" "APP\Laser_Distance.o" "APP\Maze.o" "HardWare\ADC.o" "HardWare\Delay.o" "HardWare\Encoder.o" "HardWare\Grayscale.o" "HardWare\Interrupt.o" "HardWare\OLED.o" "HardWare\PID.o" "HardWare\Usart.o" "HardWare\icm42688.o" "HardWare\multi_button.o" "HardWare\spi.o" "HardWare\tb6612.o" "HardWare\vl53l1x\core\vl53l1_api.o" "HardWare\vl53l1x\core\vl53l1_api_calibration.o" "HardWare\vl53l1x\core\vl53l1_api_core.o" "HardWare\vl53l1x\core\vl53l1_api_debug.o" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.o" "HardWare\vl53l1x\core\vl53l1_api_strings.o" "HardWare\vl53l1x\core\vl53l1_core.o" "HardWare\vl53l1x\core\vl53l1_core_support.o" "HardWare\vl53l1x\core\vl53l1_error_strings.o" "HardWare\vl53l1x\core\vl53l1_register_funcs.o" "HardWare\vl53l1x\core\vl53l1_silicon_core.o" "HardWare\vl53l1x\core\vl53l1_wait.o" "HardWare\vl53l1x\platform\IOI2C.o" "HardWare\vl53l1x\platform\vl53l1_platform.o" "HardWare\vl53l1x\platform\vl53l1x.o" 
-	-$(RM) "Middle\Bat.o" "Middle\IMU.o" "Middle\Key.o" "Middle\Motor.o" "Middle\Servo.o" "Middle\Uart_Data.o" "Middle\my_vl53l1x.o" "Middle\Fusion\FusionAhrs.o" "Middle\Fusion\FusionBias.o" "Middle\Fusion\FusionCompass.o" "Task\Menu.o" "Test\ADC_Test.o" "Test\Drive_Test.o" "Test\Encoder_Test.o" "Test\Grayscale_Test.o" "Test\ICM_Test.o" "Test\Key_Test.o" "Test\Maze_Test.o" "Test\Motor_Test.o" "Test\OLED_Test.o" "Test\Servo_Test.o" "Test\TB6612_Test.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
+	-$(RM) "Middle\Bat.o" "Middle\Buzzer.o" "Middle\Gimbal_Send.o" "Middle\IMU.o" "Middle\Key.o" "Middle\LED.o" "Middle\Motor.o" "Middle\Servo.o" "Middle\Uart_Data.o" "Middle\my_vl53l1x.o" "Middle\Fusion\FusionAhrs.o" "Middle\Fusion\FusionBias.o" "Middle\Fusion\FusionCompass.o" "Task\Menu.o" "Test\ADC_Test.o" "Test\Buzzer_Test.o" "Test\Drive_Test.o" "Test\Encoder_Test.o" "Test\Gimbal_Test.o" "Test\Grayscale_Test.o" "Test\ICM_Test.o" "Test\Key_Test.o" "Test\LED_Test.o" "Test\Maze_Test.o" "Test\Motor_Test.o" "Test\OLED_Test.o" "Test\Servo_Test.o" "Test\TB6612_Test.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
 	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "main.d" "APP\Drive.d" "APP\Grayscale_Signal.d" "APP\Laser_Distance.d" "APP\Maze.d" "HardWare\ADC.d" "HardWare\Delay.d" "HardWare\Encoder.d" "HardWare\Grayscale.d" "HardWare\Interrupt.d" "HardWare\OLED.d" "HardWare\PID.d" "HardWare\Usart.d" "HardWare\icm42688.d" "HardWare\multi_button.d" "HardWare\spi.d" "HardWare\tb6612.d" "HardWare\vl53l1x\core\vl53l1_api.d" "HardWare\vl53l1x\core\vl53l1_api_calibration.d" "HardWare\vl53l1x\core\vl53l1_api_core.d" "HardWare\vl53l1x\core\vl53l1_api_debug.d" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.d" "HardWare\vl53l1x\core\vl53l1_api_strings.d" "HardWare\vl53l1x\core\vl53l1_core.d" "HardWare\vl53l1x\core\vl53l1_core_support.d" "HardWare\vl53l1x\core\vl53l1_error_strings.d" "HardWare\vl53l1x\core\vl53l1_register_funcs.d" "HardWare\vl53l1x\core\vl53l1_silicon_core.d" "HardWare\vl53l1x\core\vl53l1_wait.d" "HardWare\vl53l1x\platform\IOI2C.d" "HardWare\vl53l1x\platform\vl53l1_platform.d" "HardWare\vl53l1x\platform\vl53l1x.d" 
-	-$(RM) "Middle\Bat.d" "Middle\IMU.d" "Middle\Key.d" "Middle\Motor.d" "Middle\Servo.d" "Middle\Uart_Data.d" "Middle\my_vl53l1x.d" "Middle\Fusion\FusionAhrs.d" "Middle\Fusion\FusionBias.d" "Middle\Fusion\FusionCompass.d" "Task\Menu.d" "Test\ADC_Test.d" "Test\Drive_Test.d" "Test\Encoder_Test.d" "Test\Grayscale_Test.d" "Test\ICM_Test.d" "Test\Key_Test.d" "Test\Maze_Test.d" "Test\Motor_Test.d" "Test\OLED_Test.d" "Test\Servo_Test.d" "Test\TB6612_Test.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
+	-$(RM) "Middle\Bat.d" "Middle\Buzzer.d" "Middle\Gimbal_Send.d" "Middle\IMU.d" "Middle\Key.d" "Middle\LED.d" "Middle\Motor.d" "Middle\Servo.d" "Middle\Uart_Data.d" "Middle\my_vl53l1x.d" "Middle\Fusion\FusionAhrs.d" "Middle\Fusion\FusionBias.d" "Middle\Fusion\FusionCompass.d" "Task\Menu.d" "Test\ADC_Test.d" "Test\Buzzer_Test.d" "Test\Drive_Test.d" "Test\Encoder_Test.d" "Test\Gimbal_Test.d" "Test\Grayscale_Test.d" "Test\ICM_Test.d" "Test\Key_Test.d" "Test\LED_Test.d" "Test\Maze_Test.d" "Test\Motor_Test.d" "Test\OLED_Test.d" "Test\Servo_Test.d" "Test\TB6612_Test.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
 	-@echo ' '
 
 .PHONY: all clean dependents

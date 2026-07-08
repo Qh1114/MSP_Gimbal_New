@@ -1,7 +1,7 @@
 # FIXED
 
 Test/Key_Test.o: ../Test/Key_Test.c ../Test/Key_Test.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -85,9 +85,9 @@ Test/Key_Test.o: ../Test/Key_Test.c ../Test/Key_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Key.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h
 ../Test/Key_Test.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -171,4 +171,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Key.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h:

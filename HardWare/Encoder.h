@@ -2,6 +2,7 @@
 #define __ENCODER_H__
 
 #include "ti_msp_dl_config.h"
+#include <stdbool.h>
 
 typedef enum {
     ENA_L,
@@ -10,13 +11,12 @@ typedef enum {
     ENB_R
 } EncoderType;
 
-void Encoder_Init(void);
-void Encoder_Count_Get(int64_t* count_l, int64_t* count_r);
-void Encoder_Speed_Get(float* speed_l, float* speed_r);
-void Encoder_Speed_Get_LEFT(float* speed_l);
-void Encoder_Speed_Get_RIGHT(float* speed_r);
-void Encoder_AngleSpeed_Get(float* angle_l, float* angle_r);
-void Encoder_Callback(EncoderType type);
-void Encoder_10ms_Callback(void);
+void  Encoder_Init(void);
+void  Encoder_Count_Get(int64_t* count_l, int64_t* count_r);
+float Encoder_Speed_Get_LEFT(void);
+float Encoder_Speed_Get_RIGHT(void);
+bool  Encoder_New_Edge_LEFT(void);
+bool  Encoder_New_Edge_RIGHT(void);
+void  Encoder_Callback(EncoderType type, uint32_t timestamp_us);
 
 #endif

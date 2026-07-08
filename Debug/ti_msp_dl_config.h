@@ -131,7 +131,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define PWM_BUZZER_INST                                                    TIMA1
 #define PWM_BUZZER_INST_IRQHandler                              TIMA1_IRQHandler
 #define PWM_BUZZER_INST_INT_IRQN                                (TIMA1_INT_IRQn)
-#define PWM_BUZZER_INST_CLK_FREQ                                        80000000
+#define PWM_BUZZER_INST_CLK_FREQ                                         1000000
 /* GPIO defines for channel 0 */
 #define GPIO_PWM_BUZZER_C0_PORT                                            GPIOA
 #define GPIO_PWM_BUZZER_C0_PIN                                    DL_GPIO_PIN_17
@@ -214,9 +214,9 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define GPIO_UART_Gimbal_IOMUX_TX                                (IOMUX_PINCM59)
 #define GPIO_UART_Gimbal_IOMUX_RX_FUNC                 IOMUX_PINCM55_PF_UART3_RX
 #define GPIO_UART_Gimbal_IOMUX_TX_FUNC                 IOMUX_PINCM59_PF_UART3_TX
-#define UART_Gimbal_BAUD_RATE                                             (9600)
-#define UART_Gimbal_IBRD_80_MHZ_9600_BAUD                                  (520)
-#define UART_Gimbal_FBRD_80_MHZ_9600_BAUD                                   (53)
+#define UART_Gimbal_BAUD_RATE                                           (115200)
+#define UART_Gimbal_IBRD_80_MHZ_115200_BAUD                                 (43)
+#define UART_Gimbal_FBRD_80_MHZ_115200_BAUD                                 (26)
 /* Defines for UART_WIRELESS */
 #define UART_WIRELESS_INST                                                 UART1
 #define UART_WIRELESS_INST_FREQUENCY                                    40000000

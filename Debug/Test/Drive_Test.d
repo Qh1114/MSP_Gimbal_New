@@ -1,8 +1,8 @@
 # FIXED
 
 Test/Drive_Test.o: ../Test/Drive_Test.c ../Test/Drive_Test.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Drive.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/OLED.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/OLED.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -86,14 +86,14 @@ Test/Drive_Test.o: ../Test/Drive_Test.c ../Test/Drive_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Uart_Data.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Key.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Uart_Data.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h
 ../Test/Drive_Test.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/APP/Drive.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/OLED.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/OLED.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -177,8 +177,8 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/IMU.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Uart_Data.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Delay.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Usart.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/Middle/Key.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Uart_Data.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h:

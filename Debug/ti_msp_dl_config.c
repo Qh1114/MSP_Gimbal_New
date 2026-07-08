@@ -584,14 +584,14 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_SERVO_init(void) {
 
 }
 /*
- * Timer clock configuration to be sourced by  / 1 (80000000 Hz)
+ * Timer clock configuration to be sourced by  / 8 (10000000 Hz)
  * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
- *   80000000 Hz = 80000000 Hz / (1 * (0 + 1))
+ *   1000000 Hz = 10000000 Hz / (8 * (9 + 1))
  */
 static const DL_TimerA_ClockConfig gPWM_BUZZERClockConfig = {
     .clockSel = DL_TIMER_CLOCK_BUSCLK,
-    .divideRatio = DL_TIMER_CLOCK_DIVIDE_1,
-    .prescale = 0U
+    .divideRatio = DL_TIMER_CLOCK_DIVIDE_8,
+    .prescale = 9U
 };
 
 static const DL_TimerA_PWMConfig gPWM_BUZZERConfig = {
@@ -617,7 +617,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_BUZZER_init(void) {
 		DL_TIMERA_CAPTURE_COMPARE_0_INDEX);
 
     DL_TimerA_setCaptCompUpdateMethod(PWM_BUZZER_INST, DL_TIMER_CC_UPDATE_METHOD_IMMEDIATE, DL_TIMERA_CAPTURE_COMPARE_0_INDEX);
-    DL_TimerA_setCaptureCompareValue(PWM_BUZZER_INST, 1000, DL_TIMER_CC_0_INDEX);
+    DL_TimerA_setCaptureCompareValue(PWM_BUZZER_INST, 500, DL_TIMER_CC_0_INDEX);
 
     DL_TimerA_enableClock(PWM_BUZZER_INST);
 
@@ -695,6 +695,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_TIMER_10ms_init(void) {
     DL_TimerG_initTimerMode(TIMER_10ms_INST,
         (DL_TimerG_TimerConfig *) &gTIMER_10msTimerConfig);
     DL_TimerG_enableInterrupt(TIMER_10ms_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
+	NVIC_SetPriority(TIMER_10ms_INST_INT_IRQN, 2);
     DL_TimerG_enableClock(TIMER_10ms_INST);
 
 
@@ -732,7 +733,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_TIMER_2ms_init(void) {
     DL_TimerG_initTimerMode(TIMER_2ms_INST,
         (DL_TimerG_TimerConfig *) &gTIMER_2msTimerConfig);
     DL_TimerG_enableInterrupt(TIMER_2ms_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
-	NVIC_SetPriority(TIMER_2ms_INST_INT_IRQN, 1);
+	NVIC_SetPriority(TIMER_2ms_INST_INT_IRQN, 2);
     DL_TimerG_enableClock(TIMER_2ms_INST);
 
 
@@ -826,11 +827,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_Gimbal_init(void)
     DL_UART_Main_init(UART_Gimbal_INST, (DL_UART_Main_Config *) &gUART_GimbalConfig);
     /*
      * Configure baud rate by setting oversampling and baud rate divisors.
-     *  Target baud rate: 9600
-     *  Actual baud rate: 9600.1
+     *  Target baud rate: 115200
+     *  Actual baud rate: 115190.78
      */
     DL_UART_Main_setOversampling(UART_Gimbal_INST, DL_UART_OVERSAMPLING_RATE_16X);
-    DL_UART_Main_setBaudRateDivisor(UART_Gimbal_INST, UART_Gimbal_IBRD_80_MHZ_9600_BAUD, UART_Gimbal_FBRD_80_MHZ_9600_BAUD);
+    DL_UART_Main_setBaudRateDivisor(UART_Gimbal_INST, UART_Gimbal_IBRD_80_MHZ_115200_BAUD, UART_Gimbal_FBRD_80_MHZ_115200_BAUD);
 
 
 

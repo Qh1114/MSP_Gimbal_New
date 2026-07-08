@@ -7,11 +7,14 @@ SHELL = cmd.exe
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Test/ADC_Test.c \
+../Test/Buzzer_Test.c \
 ../Test/Drive_Test.c \
 ../Test/Encoder_Test.c \
+../Test/Gimbal_Test.c \
 ../Test/Grayscale_Test.c \
 ../Test/ICM_Test.c \
 ../Test/Key_Test.c \
+../Test/LED_Test.c \
 ../Test/Maze_Test.c \
 ../Test/Motor_Test.c \
 ../Test/OLED_Test.c \
@@ -22,11 +25,14 @@ C_SRCS += \
 
 C_DEPS += \
 ./Test/ADC_Test.d \
+./Test/Buzzer_Test.d \
 ./Test/Drive_Test.d \
 ./Test/Encoder_Test.d \
+./Test/Gimbal_Test.d \
 ./Test/Grayscale_Test.d \
 ./Test/ICM_Test.d \
 ./Test/Key_Test.d \
+./Test/LED_Test.d \
 ./Test/Maze_Test.d \
 ./Test/Motor_Test.d \
 ./Test/OLED_Test.d \
@@ -37,11 +43,14 @@ C_DEPS += \
 
 OBJS += \
 ./Test/ADC_Test.o \
+./Test/Buzzer_Test.o \
 ./Test/Drive_Test.o \
 ./Test/Encoder_Test.o \
+./Test/Gimbal_Test.o \
 ./Test/Grayscale_Test.o \
 ./Test/ICM_Test.o \
 ./Test/Key_Test.o \
+./Test/LED_Test.o \
 ./Test/Maze_Test.o \
 ./Test/Motor_Test.o \
 ./Test/OLED_Test.o \
@@ -52,11 +61,14 @@ OBJS += \
 
 OBJS__QUOTED += \
 "Test\ADC_Test.o" \
+"Test\Buzzer_Test.o" \
 "Test\Drive_Test.o" \
 "Test\Encoder_Test.o" \
+"Test\Gimbal_Test.o" \
 "Test\Grayscale_Test.o" \
 "Test\ICM_Test.o" \
 "Test\Key_Test.o" \
+"Test\LED_Test.o" \
 "Test\Maze_Test.o" \
 "Test\Motor_Test.o" \
 "Test\OLED_Test.o" \
@@ -67,11 +79,14 @@ OBJS__QUOTED += \
 
 C_DEPS__QUOTED += \
 "Test\ADC_Test.d" \
+"Test\Buzzer_Test.d" \
 "Test\Drive_Test.d" \
 "Test\Encoder_Test.d" \
+"Test\Gimbal_Test.d" \
 "Test\Grayscale_Test.d" \
 "Test\ICM_Test.d" \
 "Test\Key_Test.d" \
+"Test\LED_Test.d" \
 "Test\Maze_Test.d" \
 "Test\Motor_Test.d" \
 "Test\OLED_Test.d" \
@@ -82,11 +97,14 @@ C_DEPS__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../Test/ADC_Test.c" \
+"../Test/Buzzer_Test.c" \
 "../Test/Drive_Test.c" \
 "../Test/Encoder_Test.c" \
+"../Test/Gimbal_Test.c" \
 "../Test/Grayscale_Test.c" \
 "../Test/ICM_Test.c" \
 "../Test/Key_Test.c" \
+"../Test/LED_Test.c" \
 "../Test/Maze_Test.c" \
 "../Test/Motor_Test.c" \
 "../Test/OLED_Test.c" \

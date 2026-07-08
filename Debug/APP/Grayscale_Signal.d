@@ -1,7 +1,7 @@
 # FIXED
 
 APP/Grayscale_Signal.o: ../APP/Grayscale_Signal.c \
- C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Grayscale.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Grayscale.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -86,7 +86,7 @@ APP/Grayscale_Signal.o: ../APP/Grayscale_Signal.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
  ../APP/Grayscale_Signal.h
-C:/Users/Qh/Desktop/ccs/MSP_Car_1/HardWare/Grayscale.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Grayscale.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:

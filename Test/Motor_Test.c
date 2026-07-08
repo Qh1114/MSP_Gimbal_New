@@ -17,7 +17,7 @@ void Motor_Test1(void)
     float Bat_Voltage;
     int64_t count_l, count_r;
     while(1) {
-        Encoder_AngleSpeed_Get(&speed_l, &speed_r);
+        speed_l = Encoder_Speed_Get_LEFT(); speed_r = Encoder_Speed_Get_RIGHT();
         Encoder_Count_Get(&count_l, &count_r);
         uint8_t length = Uart0_Receive_Command(Buff);
         Bat_Voltage = Bat_Read();
@@ -81,7 +81,7 @@ void Motor_Test2(void)
     int64_t count_l, count_r;
     while(1) {
         Goal_Step_Change(&goal_speed);
-        Encoder_AngleSpeed_Get(&speed_l, &speed_r);
+        speed_l = Encoder_Speed_Get_LEFT(); speed_r = Encoder_Speed_Get_RIGHT();
         Encoder_Count_Get(&count_l, &count_r);
         uint8_t length = Uart0_Receive_Command(Buff);
         Bat_Voltage = Bat_Read();
@@ -119,7 +119,7 @@ void Motor_Test3(void)
     float Bat_Voltage;
     int64_t count_l, count_r;
     while(1) {
-        Encoder_AngleSpeed_Get(&speed_l, &speed_r);
+        speed_l = Encoder_Speed_Get_LEFT(); speed_r = Encoder_Speed_Get_RIGHT();
         Encoder_Count_Get(&count_l, &count_r);
         uint8_t length = Uart0_Receive_Command(Buff);
         Bat_Voltage = Bat_Read();

@@ -11,9 +11,11 @@
 #include "icm42688.h"
 #include "IMU.h"
 #include "Drive.h"
-
+#include "Buzzer.h"
+#include "LED.h"
 void GROUP1_IRQHandler(void)
 {
+    uint32_t now = (uint32_t)Get_us();
     uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, LASER_GPIO1_PIN | LASER_GPIO3_PIN | ENCODER_ENB_R_PIN);
     uint32_t gpioB = DL_GPIO_getEnabledInterruptStatus(GPIOB, LASER_GPIO2_PIN | ENCODER_ENA_L_PIN  | ENCODER_ENB_L_PIN | ENCODER_ENA_R_PIN);
 
@@ -36,22 +38,22 @@ void GROUP1_IRQHandler(void)
     //----------------------------编码器---------------------------·//
 
     if((gpioA & ENCODER_ENB_R_PIN) == ENCODER_ENB_R_PIN) {
-        Encoder_Callback(ENB_R);
+        Encoder_Callback(ENB_R, now);
         DL_GPIO_clearInterruptStatus(GPIOA, ENCODER_ENB_R_PIN);
     }
 
     if((gpioB & ENCODER_ENA_L_PIN) == ENCODER_ENA_L_PIN) {
-        Encoder_Callback(ENA_L);
+        Encoder_Callback(ENA_L, now);
         DL_GPIO_clearInterruptStatus(GPIOB, ENCODER_ENA_L_PIN);
     }
 
     if((gpioB & ENCODER_ENB_L_PIN) == ENCODER_ENB_L_PIN) {
-        Encoder_Callback(ENB_L);
+        Encoder_Callback(ENB_L, now);
         DL_GPIO_clearInterruptStatus(GPIOB, ENCODER_ENB_L_PIN);
     }
 
     if((gpioB & ENCODER_ENA_R_PIN) == ENCODER_ENA_R_PIN) {
-        Encoder_Callback(ENA_R);
+        Encoder_Callback(ENA_R, now);
         DL_GPIO_clearInterruptStatus(GPIOB, ENCODER_ENA_R_PIN);
     }
 
@@ -63,9 +65,7 @@ void TIMER_10ms_INST_IRQHandler(void)
 {
     ////start_time = Get_us();
     Bat_Callback();
-    Encoder_10ms_Callback();
     Drive_Callback();
-    Motor_Callback();
     button_ticks();
     Grayscale_Callback();
     //count++;
@@ -75,6 +75,9 @@ void TIMER_10ms_INST_IRQHandler(void)
 
 void TIMER_2ms_INST_IRQHandler(void)
 {
+    Motor_Callback();
+    Buzzer_tick();
+    LED_tick();
     IMU_Callback();
 }
 

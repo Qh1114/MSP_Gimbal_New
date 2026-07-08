@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(find \"c:\\\\Users\\\\Qh\\\\Desktop\\\\ccs\" -name \"dl_gpio.h\" -type f 2>/dev/null | head -5)",
+      "Read(//c/Users/Qh/Desktop/ccs/**)",
+      "Read(//c/ti/**)",
+      "Read(//c/Users/Qh/**)"
+    ]
+  }
+}

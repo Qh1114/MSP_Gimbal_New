@@ -32,10 +32,45 @@
 
 #include "ti_msp_dl_config.h"
 
+#include "Usart.h"
+#include "Key.h"
+
+#include "Gimbal_Test.h"
+#include "Uart_Test.h"
+#include "Encoder_Test.h"
+#include "Motor_Test.h"
+#include "TB6612_Test.h"
+#include "Drive_Test.h"
+#include "Buzzer_Test.h"
+#include "LED_Test.h"
 int main(void)
 {
     SYSCFG_DL_init();
-
+    
+    Key_Init();
+    Uart_Init();
+    
+//------------------激光与编码器中断-------------------------//
+    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOB_INT_IRQN);
+    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOA_INT_IRQN);
+//------------------定时器中断------------------------------//
+    NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
+	DL_Timer_startCounter(TIMER_10ms_INST);
+//------------------定时器中断------------------------------//
+    NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
+	DL_Timer_startCounter(TIMER_2ms_INST);
+    
+    LED_Test1();
+    //Buzzer_Test2();
+    //Buzzer_Test1();
+    //Drive_Test3();
+    //Encoder_Test3();
+    //TB6612_Test1();
+    //Motor_Test3();
+    //Motor_Test2();
+    //Encoder_Test2();
+    //Uart_Test5();
+    //Gimbal_Test1();
     while (1) {
         
     }

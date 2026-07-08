@@ -77,8 +77,8 @@ void Drive_Callback(void)
 {
     if(cmd_angle_drive)
     {
-        angle_tick++;
-        if(angle_tick >= 5) {
+        // angle_tick++;
+        // if(angle_tick >= 5) {
             float current_angle = IMU_GetYaw();
             float angle_error = CalculateAngleError(Goal_Turn_Angle, current_angle);
             // if(fabsf(angle_error) < 7.0f) {
@@ -92,17 +92,17 @@ void Drive_Callback(void)
             Motor_SetSpeed(MOTOR_LEFT, -correction);
             Motor_SetSpeed(MOTOR_RIGHT, correction);
             angle_tick = 0;
-        }
+        // }
     }else if(cmd_straight_drive)
     {
-        straight_tick++;
-        if(straight_tick >= 3) {
+        // straight_tick++;
+        // if(straight_tick >= 3) {
             float current_angle = IMU_GetYaw();
             float angle_error = CalculateAngleError(Goal_Straight_Angle, current_angle);
             float correction = PID_Compute(&pid_straight_drive, angle_error);
             Motor_SetSpeed(MOTOR_LEFT, speed - correction);
             Motor_SetSpeed(MOTOR_RIGHT, speed + correction);
             straight_tick = 0;
-        }
+        // }
     }
 }

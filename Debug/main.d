@@ -83,7 +83,17 @@ main.o: ../main.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
- C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h
+ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Gimbal_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Uart_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Encoder_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Motor_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/TB6612_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Drive_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Buzzer_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/LED_Test.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -167,3 +177,13 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Gimbal_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Uart_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Encoder_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Motor_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/TB6612_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Drive_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Buzzer_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/LED_Test.h:

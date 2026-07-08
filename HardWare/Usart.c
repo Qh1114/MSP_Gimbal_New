@@ -10,6 +10,11 @@
 #define CommandStartByte 0xAA   //命令起始字节
 #define CommandEndByte 0xBB     //命令结束字节
 
+//----------------云台串口----------------//
+#define Gimbal_StartByte 0x7A
+#define Gimbal_EndByte 0x7B
+//---------------------------------------//
+
 uint8_t ReadIndex = 0;
 uint8_t WriteIndex = 0;
 uint8_t Buffer[BufferSize];
@@ -188,3 +193,50 @@ void UART_INST_IRQHandler(void)
     }
 }
 
+//---------------------------------------云台发送代码-------------------------------------------//
+static uint8_t GimbalCommandBuffer[10];
+//串口发送单个字符
+static void Uart_Gimbal_Send_Char(char ch)
+{
+    while(DL_UART_isBusy(UART_Gimbal_INST) == true);
+    DL_UART_Main_transmitData(UART_Gimbal_INST, ch);
+}
+
+//串口发送字符串
+void Uart_Gimbal_Send_String(char* str)
+{
+    while(str!=0 && *str!=0)
+    {
+        Uart_Gimbal_Send_Char(*str++);
+    }
+}
+
+static void Uart_Gimbal_Send_Bytes(uint8_t* data, uint8_t length)
+{
+    for(uint8_t i = 0; i < length; i++){
+        Uart_Gimbal_Send_Char(data[i]);
+    }
+}
+
+//@简介：计算BBC校验码
+//@参数：command:命令数据
+//@参数：length:命令长度
+//@返回值：BBC校验码
+static uint8_t BBC_Get(uint8_t* command, uint8_t length)
+{
+    uint8_t bbc = 0;
+    for(uint8_t i = 0; i < length; i++){
+        bbc ^= command[i];
+    }
+    return bbc;
+}
+
+void Uart_Gimbal_Send_Command(uint8_t* command, uint8_t length)
+{
+    //构建命令数据包
+    GimbalCommandBuffer[0] = Gimbal_StartByte;
+    memcpy(&GimbalCommandBuffer[1], command, length);
+    GimbalCommandBuffer[length + 1] = BBC_Get(GimbalCommandBuffer, length + 1);
+    GimbalCommandBuffer[length + 2] = Gimbal_EndByte;
+    Uart_Gimbal_Send_Bytes(GimbalCommandBuffer, length + 3);
+}
