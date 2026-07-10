@@ -402,6 +402,7 @@ TIMER2.peripheral.$assign = "TIMG7";
 UART1.$name                            = "UART";
 UART1.targetBaudRate                   = 115200;
 UART1.enabledInterrupts                = ["RX"];
+UART1.interruptPriority                = "2";
 UART1.peripheral.$assign               = "UART0";
 UART1.peripheral.rxPin.$assign         = "PA11";
 UART1.peripheral.txPin.$assign         = "PA10";
@@ -427,10 +428,13 @@ UART2.txPinConfig.direction            = scripting.forceWrite("OUTPUT");
 UART2.txPinConfig.hideOutputInversion  = scripting.forceWrite(false);
 UART2.txPinConfig.onlyInternalResistor = scripting.forceWrite(false);
 UART2.txPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+UART2.txPinConfig.internalResistor     = "PULL_UP";
 UART2.rxPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric17";
 UART2.rxPinConfig.hideOutputInversion  = scripting.forceWrite(false);
 UART2.rxPinConfig.onlyInternalResistor = scripting.forceWrite(false);
 UART2.rxPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+UART2.rxPinConfig.enableConfig         = true;
+UART2.rxPinConfig.internalResistor     = "PULL_UP";
 
 UART3.$name                            = "UART_WIRELESS";
 UART3.peripheral.$assign               = "UART1";
@@ -446,28 +450,40 @@ UART3.rxPinConfig.hideOutputInversion  = scripting.forceWrite(false);
 UART3.rxPinConfig.onlyInternalResistor = scripting.forceWrite(false);
 UART3.rxPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
 
-UART4.$name                            = "UART_CAMERA";
-UART4.peripheral.$assign               = "UART2";
-UART4.peripheral.rxPin.$assign         = "PB18";
-UART4.peripheral.txPin.$assign         = "PB17";
-UART4.txPinConfig.direction            = scripting.forceWrite("OUTPUT");
-UART4.txPinConfig.hideOutputInversion  = scripting.forceWrite(false);
-UART4.txPinConfig.onlyInternalResistor = scripting.forceWrite(false);
-UART4.txPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
-UART4.txPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric3";
-UART4.rxPinConfig.hideOutputInversion  = scripting.forceWrite(false);
-UART4.rxPinConfig.onlyInternalResistor = scripting.forceWrite(false);
-UART4.rxPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
-UART4.rxPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric4";
+UART4.$name                                = "UART_CAMERA";
+UART4.targetBaudRate                       = 115200;
+UART4.enabledDMARXTriggers                 = "DL_UART_DMA_INTERRUPT_RX";
+UART4.interruptPriority                    = "1";
+UART4.enabledInterrupts                    = ["DMA_DONE_RX"];
+UART4.peripheral.$assign                   = "UART2";
+UART4.peripheral.rxPin.$assign             = "PB18";
+UART4.peripheral.txPin.$assign             = "PB17";
+UART4.txPinConfig.direction                = scripting.forceWrite("OUTPUT");
+UART4.txPinConfig.hideOutputInversion      = scripting.forceWrite(false);
+UART4.txPinConfig.onlyInternalResistor     = scripting.forceWrite(false);
+UART4.txPinConfig.passedPeripheralType     = scripting.forceWrite("Digital");
+UART4.txPinConfig.$name                    = "ti_driverlib_gpio_GPIOPinGeneric3";
+UART4.rxPinConfig.hideOutputInversion      = scripting.forceWrite(false);
+UART4.rxPinConfig.onlyInternalResistor     = scripting.forceWrite(false);
+UART4.rxPinConfig.passedPeripheralType     = scripting.forceWrite("Digital");
+UART4.rxPinConfig.$name                    = "ti_driverlib_gpio_GPIOPinGeneric4";
+UART4.DMA_CHANNEL_RX.$name                 = "DMA_CH0";
+UART4.DMA_CHANNEL_RX.srcLength             = "BYTE";
+UART4.DMA_CHANNEL_RX.dstLength             = "BYTE";
+UART4.DMA_CHANNEL_RX.transferMode          = "FULL_CH_REPEAT_SINGLE";
+UART4.DMA_CHANNEL_RX.configureTransferSize = true;
+UART4.DMA_CHANNEL_RX.addressMode           = "f2b";
+UART4.DMA_CHANNEL_RX.transferSize          = 256;
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
  * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
  * re-solve from scratch.
  */
-Board.peripheral.$suggestSolution            = "DEBUGSS";
-Board.peripheral.swclkPin.$suggestSolution   = "PA20";
-Board.peripheral.swdioPin.$suggestSolution   = "PA19";
-CAPTURE1.peripheral.$suggestSolution         = "TIMG8";
-CAPTURE1.peripheral.ccp0Pin.$suggestSolution = "PA21";
-TIMER1.peripheral.$suggestSolution           = "TIMG0";
+Board.peripheral.$suggestSolution                = "DEBUGSS";
+Board.peripheral.swclkPin.$suggestSolution       = "PA20";
+Board.peripheral.swdioPin.$suggestSolution       = "PA19";
+CAPTURE1.peripheral.$suggestSolution             = "TIMG8";
+CAPTURE1.peripheral.ccp0Pin.$suggestSolution     = "PA21";
+TIMER1.peripheral.$suggestSolution               = "TIMG0";
+UART4.DMA_CHANNEL_RX.peripheral.$suggestSolution = "DMA_CH0";

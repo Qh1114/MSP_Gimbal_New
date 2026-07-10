@@ -24,6 +24,6 @@ void Gimbal_SaveSettings(GimbalID_t GimbalID);
 void Gimbal_SetSpeed(GimbalID_t GimbalID, int16_t speed);
 void Gimbal_SetAcceleration(GimbalID_t GimbalID, uint16_t acceleration);
 void Gimbal_MultiTurnMove(GimbalID_t GimbalID, float turn_angle);  
-void Gimbal_SingleTurnMove(GimbalID_t GimbalID, uint16_t position);  
+void Gimbal_SingleTurnMove(GimbalID_t GimbalID, float position);  
 
 #endif

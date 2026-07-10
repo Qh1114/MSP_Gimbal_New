@@ -14,17 +14,32 @@
 #define Gimbal_StartByte 0x7A
 #define Gimbal_EndByte 0x7B
 //---------------------------------------//
+//----------------相机串口----------------//
+#define Camera_StartByte 0x7A
+#define Camera_EndByte 0x7B
+//---------------------------------------//
 
 uint8_t ReadIndex = 0;
 uint8_t WriteIndex = 0;
 uint8_t Buffer[BufferSize];
 uint8_t data;
 
+static uint8_t GimbalCommandBuffer[10];
+
+uint8_t CameraCommandBuffer[BufferSize];
+uint32_t CommandCount = 0;
+
 void Uart_Init(void)
 {
     NVIC_ClearPendingIRQ(UART_INST_INT_IRQN);
     (void)DL_UART_Main_receiveData(UART_INST);
     NVIC_EnableIRQ(UART_INST_INT_IRQN);
+
+    (void)DL_UART_Main_receiveData(UART_Gimbal_INST);
+    
+    NVIC_ClearPendingIRQ(UART_CAMERA_INST_INT_IRQN);
+    (void)DL_UART_Main_receiveData(UART_CAMERA_INST);
+    NVIC_EnableIRQ(UART_CAMERA_INST_INT_IRQN);
 }
 
 //串口发送单个字符
@@ -194,7 +209,6 @@ void UART_INST_IRQHandler(void)
 }
 
 //---------------------------------------云台发送代码-------------------------------------------//
-static uint8_t GimbalCommandBuffer[10];
 //串口发送单个字符
 static void Uart_Gimbal_Send_Char(char ch)
 {
@@ -239,4 +253,53 @@ void Uart_Gimbal_Send_Command(uint8_t* command, uint8_t length)
     GimbalCommandBuffer[length + 1] = BBC_Get(GimbalCommandBuffer, length + 1);
     GimbalCommandBuffer[length + 2] = Gimbal_EndByte;
     Uart_Gimbal_Send_Bytes(GimbalCommandBuffer, length + 3);
+}
+
+//--------------------------------相机串口代码-------------------------------------------//
+//串口发送单个字符
+void Uart_Camera_Send_Char(char ch)
+{
+    while(DL_UART_isBusy(UART_CAMERA_INST) == true);
+    DL_UART_Main_transmitData(UART_CAMERA_INST, ch);
+}
+
+//串口发送字符串
+void Uart_Camera_Send_String(char* str)
+{
+    while(str!=0 && *str!=0)
+    {
+        Uart_Camera_Send_Char(*str++);
+    }
+}
+
+//串口打印
+void Uart_Camera_Printf(const char* format, ...)
+{
+    char tmp[128];  
+    va_list argptr;
+
+    va_start(argptr, format);
+    vsnprintf(tmp, sizeof(tmp) - 1, format, argptr);
+    va_end(argptr);
+
+    Uart_Camera_Send_String(tmp);
+}
+
+void Uart_Camera_Get_Command_Count(uint32_t* count, uint32_t* index)
+{
+    *count = CommandCount;
+    *index = BufferSize - DL_DMA_getTransferSize(DMA, DMA_CH0_CHAN_ID);
+}
+
+
+void UART_CAMERA_INST_IRQHandler(void)
+{
+    switch( DL_UART_getPendingInterrupt(UART_CAMERA_INST) )
+    {
+        case DL_UART_MAIN_IIDX_DMA_DONE_RX:
+            CommandCount++;
+            break;
+        default:
+            break;
+    }
 }

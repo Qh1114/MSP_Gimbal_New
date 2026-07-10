@@ -246,9 +246,9 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define GPIO_UART_CAMERA_IOMUX_TX                                (IOMUX_PINCM43)
 #define GPIO_UART_CAMERA_IOMUX_RX_FUNC                 IOMUX_PINCM44_PF_UART2_RX
 #define GPIO_UART_CAMERA_IOMUX_TX_FUNC                 IOMUX_PINCM43_PF_UART2_TX
-#define UART_CAMERA_BAUD_RATE                                             (9600)
-#define UART_CAMERA_IBRD_40_MHZ_9600_BAUD                                  (260)
-#define UART_CAMERA_FBRD_40_MHZ_9600_BAUD                                   (27)
+#define UART_CAMERA_BAUD_RATE                                           (115200)
+#define UART_CAMERA_IBRD_40_MHZ_115200_BAUD                                 (21)
+#define UART_CAMERA_FBRD_40_MHZ_115200_BAUD                                 (45)
 
 
 
@@ -285,6 +285,11 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define GPIO_BAT_ADC_IOMUX_C0                                    (IOMUX_PINCM60)
 #define GPIO_BAT_ADC_IOMUX_C0_FUNC                (IOMUX_PINCM60_PF_UNCONNECTED)
 
+
+
+/* Defines for DMA_CH0 */
+#define DMA_CH0_CHAN_ID                                                      (0)
+#define UART_CAMERA_INST_DMA_TRIGGER                         (DMA_UART2_RX_TRIG)
 
 
 /* Port definition for Pin Group FLASH */
@@ -451,6 +456,7 @@ void SYSCFG_DL_UART_WIRELESS_init(void);
 void SYSCFG_DL_UART_CAMERA_init(void);
 void SYSCFG_DL_SPI_1_init(void);
 void SYSCFG_DL_BAT_ADC_init(void);
+void SYSCFG_DL_DMA_init(void);
 
 void SYSCFG_DL_SYSTICK_init(void);
 

@@ -34,6 +34,7 @@
 
 #include "Usart.h"
 #include "Key.h"
+#include "Delay.h"
 
 #include "Gimbal_Test.h"
 #include "Uart_Test.h"
@@ -43,23 +44,37 @@
 #include "Drive_Test.h"
 #include "Buzzer_Test.h"
 #include "LED_Test.h"
+#include "vl53l1x_Test.h"
+#include "ICM_Test.h"
+#include "Gimbal_Test.h"
+// uint8_t Buffer[256];
+
 int main(void)
 {
     SYSCFG_DL_init();
     
+    // DL_DMA_setSrcAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t)(&UART_CAMERA_INST->RXDATA));
+    // DL_DMA_setDestAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t) &Buffer[0]);
+    // DL_DMA_setTransferSize(DMA, DMA_CH0_CHAN_ID, 256);
+    // DL_DMA_enableChannel(DMA, DMA_CH0_CHAN_ID);
+    // while (false == DL_DMA_isChannelEnabled(DMA, DMA_CH0_CHAN_ID));
+
     Key_Init();
     Uart_Init();
     
 //------------------激光与编码器中断-------------------------//
-    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOB_INT_IRQN);
-    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOA_INT_IRQN);
+   // NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOB_INT_IRQN);
+    //NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOA_INT_IRQN);
 //------------------定时器中断------------------------------//
     NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_10ms_INST);
 //------------------定时器中断------------------------------//
     NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_2ms_INST);
-    
+
+    //Gimbal_Test2();
+    //ICM42688_Test5();
+    //VL53L1X_Test2();
     LED_Test1();
     //Buzzer_Test2();
     //Buzzer_Test1();
@@ -72,7 +87,11 @@ int main(void)
     //Uart_Test5();
     //Gimbal_Test1();
     while (1) {
-        
+        // uint32_t count;
+        // uint32_t index = 0;
+        // Uart_Camera_Get_Command_Count(&count, &index);
+        // Uart_Camera_Printf("CommandCount: %d, Index: %d\n", count, index);
+        // Delay_ms(500);
     }
 }
 

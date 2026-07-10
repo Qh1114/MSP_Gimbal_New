@@ -84,12 +84,13 @@ void Gimbal_MultiTurnMove(GimbalID_t GimbalID, float turn_angle)
 //@参数：GimbalID:云台ID
 //@参数：position:目标位置，单位为度
 //@注意：position的范围为0-359.9度
-void Gimbal_SingleTurnMove(GimbalID_t GimbalID, uint16_t position)
+void Gimbal_SingleTurnMove(GimbalID_t GimbalID, float position)
 {
+    uint16_t positionValue = (uint16_t)(position * 10); // 将位置转换为整数表示，保留一位小数
     GimbalCommandBuffer[0] = GimbalID;
     GimbalCommandBuffer[1] = 0x03; 
-    uint8_t positionLow = position & 0xFF;    
-    uint8_t positionHigh = (position >> 8) & 0xFF;
+    uint8_t positionLow = positionValue & 0xFF;    
+    uint8_t positionHigh = (positionValue >> 8) & 0xFF;
     GimbalCommandBuffer[2] = positionHigh;
     GimbalCommandBuffer[3] = positionLow;
     Uart_Gimbal_Send_Command(GimbalCommandBuffer, 4);

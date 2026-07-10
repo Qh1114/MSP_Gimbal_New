@@ -70,6 +70,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_UART_CAMERA_init();
     SYSCFG_DL_SPI_1_init();
     SYSCFG_DL_BAT_ADC_init();
+    SYSCFG_DL_DMA_init();
     SYSCFG_DL_SYSTICK_init();
     /* Ensure backup structures have no valid state */
 	gPWM_MotorBackup.backupRdy 	= false;
@@ -133,6 +134,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_ADC12_reset(BAT_ADC_INST);
 
 
+
     DL_GPIO_enablePower(GPIOA);
     DL_GPIO_enablePower(GPIOB);
     DL_TimerG_enablePower(PWM_Motor_INST);
@@ -148,6 +150,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_UART_Main_enablePower(UART_CAMERA_INST);
     DL_SPI_enablePower(SPI_1_INST);
     DL_ADC12_enablePower(BAT_ADC_INST);
+
 
     delay_cycles(POWER_STARTUP_DELAY);
 }
@@ -190,8 +193,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
     DL_GPIO_initPeripheralOutputFunction(
         GPIO_UART_Gimbal_IOMUX_TX, GPIO_UART_Gimbal_IOMUX_TX_FUNC);
-    DL_GPIO_initPeripheralInputFunction(
-        GPIO_UART_Gimbal_IOMUX_RX, GPIO_UART_Gimbal_IOMUX_RX_FUNC);
+    
+	DL_GPIO_initPeripheralInputFunctionFeatures(
+		 GPIO_UART_Gimbal_IOMUX_RX, GPIO_UART_Gimbal_IOMUX_RX_FUNC,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
     DL_GPIO_initPeripheralOutputFunction(
         GPIO_UART_WIRELESS_IOMUX_TX, GPIO_UART_WIRELESS_IOMUX_TX_FUNC);
     DL_GPIO_initPeripheralInputFunction(
@@ -802,6 +808,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_init(void)
     /* Configure Interrupts */
     DL_UART_Main_enableInterrupt(UART_INST,
                                  DL_UART_MAIN_INTERRUPT_RX);
+    /* Setting the Interrupt Priority */
+    NVIC_SetPriority(UART_INST_INT_IRQN, 2);
 
 
     DL_UART_Main_enable(UART_INST);
@@ -889,13 +897,21 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_CAMERA_init(void)
     DL_UART_Main_init(UART_CAMERA_INST, (DL_UART_Main_Config *) &gUART_CAMERAConfig);
     /*
      * Configure baud rate by setting oversampling and baud rate divisors.
-     *  Target baud rate: 9600
-     *  Actual baud rate: 9599.81
+     *  Target baud rate: 115200
+     *  Actual baud rate: 115190.78
      */
     DL_UART_Main_setOversampling(UART_CAMERA_INST, DL_UART_OVERSAMPLING_RATE_16X);
-    DL_UART_Main_setBaudRateDivisor(UART_CAMERA_INST, UART_CAMERA_IBRD_40_MHZ_9600_BAUD, UART_CAMERA_FBRD_40_MHZ_9600_BAUD);
+    DL_UART_Main_setBaudRateDivisor(UART_CAMERA_INST, UART_CAMERA_IBRD_40_MHZ_115200_BAUD, UART_CAMERA_FBRD_40_MHZ_115200_BAUD);
 
 
+    /* Configure Interrupts */
+    DL_UART_Main_enableInterrupt(UART_CAMERA_INST,
+                                 DL_UART_MAIN_INTERRUPT_DMA_DONE_RX);
+    /* Setting the Interrupt Priority */
+    NVIC_SetPriority(UART_CAMERA_INST_INT_IRQN, 1);
+
+    /* Configure DMA Receive Event */
+    DL_UART_Main_enableDMAReceiveEvent(UART_CAMERA_INST, DL_UART_DMA_INTERRUPT_RX);
 
     DL_UART_Main_enable(UART_CAMERA_INST);
 }
@@ -952,6 +968,27 @@ SYSCONFIG_WEAK void SYSCFG_DL_BAT_ADC_init(void)
     DL_ADC12_enableInterrupt(BAT_ADC_INST,(DL_ADC12_INTERRUPT_MEM0_RESULT_LOADED));
     DL_ADC12_enableConversions(BAT_ADC_INST);
 }
+
+static const DL_DMA_Config gDMA_CH0Config = {
+    .transferMode   = DL_DMA_FULL_CH_REPEAT_SINGLE_TRANSFER_MODE,
+    .extendedMode   = DL_DMA_NORMAL_MODE,
+    .destIncrement  = DL_DMA_ADDR_INCREMENT,
+    .srcIncrement   = DL_DMA_ADDR_UNCHANGED,
+    .destWidth      = DL_DMA_WIDTH_BYTE,
+    .srcWidth       = DL_DMA_WIDTH_BYTE,
+    .trigger        = UART_CAMERA_INST_DMA_TRIGGER,
+    .triggerType    = DL_DMA_TRIGGER_TYPE_EXTERNAL,
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_DMA_CH0_init(void)
+{
+    DL_DMA_setTransferSize(DMA, DMA_CH0_CHAN_ID, 256);
+    DL_DMA_initChannel(DMA, DMA_CH0_CHAN_ID , (DL_DMA_Config *) &gDMA_CH0Config);
+}
+SYSCONFIG_WEAK void SYSCFG_DL_DMA_init(void){
+    SYSCFG_DL_DMA_CH0_init();
+}
+
 
 SYSCONFIG_WEAK void SYSCFG_DL_SYSTICK_init(void)
 {
