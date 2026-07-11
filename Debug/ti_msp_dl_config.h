@@ -157,15 +157,20 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 
 
 /* Defines for TIMER_10ms */
-#define TIMER_10ms_INST                                                  (TIMG0)
-#define TIMER_10ms_INST_IRQHandler                              TIMG0_IRQHandler
-#define TIMER_10ms_INST_INT_IRQN                                (TIMG0_INT_IRQn)
-#define TIMER_10ms_INST_LOAD_VALUE                                      (49999U)
+#define TIMER_10ms_INST                                                 (TIMG12)
+#define TIMER_10ms_INST_IRQHandler                             TIMG12_IRQHandler
+#define TIMER_10ms_INST_INT_IRQN                               (TIMG12_INT_IRQn)
+#define TIMER_10ms_INST_LOAD_VALUE                                      (99999U)
 /* Defines for TIMER_2ms */
 #define TIMER_2ms_INST                                                   (TIMG7)
 #define TIMER_2ms_INST_IRQHandler                               TIMG7_IRQHandler
 #define TIMER_2ms_INST_INT_IRQN                                 (TIMG7_INT_IRQn)
 #define TIMER_2ms_INST_LOAD_VALUE                                       (39999U)
+/* Defines for TIMER_100us */
+#define TIMER_100us_INST                                                 (TIMG0)
+#define TIMER_100us_INST_IRQHandler                             TIMG0_IRQHandler
+#define TIMER_100us_INST_INT_IRQN                               (TIMG0_INT_IRQn)
+#define TIMER_100us_INST_LOAD_VALUE                                      (3999U)
 
 
 
@@ -287,6 +292,9 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 
 
 
+/* Defines for DMA_CH1 */
+#define DMA_CH1_CHAN_ID                                                      (1)
+#define UART_Gimbal_INST_DMA_TRIGGER                         (DMA_UART3_TX_TRIG)
 /* Defines for DMA_CH0 */
 #define DMA_CH0_CHAN_ID                                                      (0)
 #define UART_CAMERA_INST_DMA_TRIGGER                         (DMA_UART2_RX_TRIG)
@@ -449,6 +457,7 @@ void SYSCFG_DL_PWM_BUZZER_init(void);
 void SYSCFG_DL_CAPTURE_0_init(void);
 void SYSCFG_DL_TIMER_10ms_init(void);
 void SYSCFG_DL_TIMER_2ms_init(void);
+void SYSCFG_DL_TIMER_100us_init(void);
 void SYSCFG_DL_I2C_0_init(void);
 void SYSCFG_DL_UART_init(void);
 void SYSCFG_DL_UART_Gimbal_init(void);

@@ -13,6 +13,8 @@
 #include "Drive.h"
 #include "Buzzer.h"
 #include "LED.h"
+#include "Gimbal_Send.h"
+
 void GROUP1_IRQHandler(void)
 {
     uint32_t now = (uint32_t)Get_us();
@@ -79,6 +81,11 @@ void TIMER_2ms_INST_IRQHandler(void)
     Buzzer_tick();
     LED_tick();
     IMU_Callback();
+}
+
+void TIMER_100us_INST_IRQHandler(void)
+{
+    Gimbal_Send_Callback();
 }
 
 void ADC0_IRQHandler(void)

@@ -13,8 +13,8 @@
 #include <stdio.h>
 #include "Maze.h"
 
-uint8_t Key = 0;
-char str[30];
+static uint8_t Key = 0;
+static char str[30];
 //自检查菜单
 void Menu_Pre(void)
 {
@@ -24,6 +24,7 @@ void Menu_Pre(void)
     OLED_Init();
     Laser_Distance_Init();
     Drive_Init();
+    
     
     NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_10ms_INST);

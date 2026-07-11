@@ -17,13 +17,27 @@ typedef enum GimbalID{
     GimbalID_Up = 0x02,                 //上云台
 } GimbalID_t;
 
+typedef enum GimbalTransmitState{
+    GimbalTransmitState_Idle = 0,               //空闲状态
+    GimbalTransmitState_Up_DMAMove,             //上云台DMA搬运中
+    GimbalTransmitState_Up_WaitEndofTransmit,   //上云台发送完成
+    GimbalTransmitState_Up_EndofTransmit,       //上云台发送完成
+    GimbalTransmitState_Down_DMAMove,           //下云台DMA搬运中
+    GimbalTransmitState_Down_WaitEndofTransmit, //下云台发送完成
+} GimbalTransmitState_t;
+
 void Gimbal_Enable(GimbalID_t GimbalID);
 void Gimbal_Disable(GimbalID_t GimbalID);
 void Gimbal_SetMode(GimbalID_t GimbalID, GimbalMode_t GimbalMode);
+void Gimbal_SetZero(GimbalID_t GimbalID);
 void Gimbal_SaveSettings(GimbalID_t GimbalID);
 void Gimbal_SetSpeed(GimbalID_t GimbalID, int16_t speed);
 void Gimbal_SetAcceleration(GimbalID_t GimbalID, uint16_t acceleration);
 void Gimbal_MultiTurnMove(GimbalID_t GimbalID, float turn_angle);  
 void Gimbal_SingleTurnMove(GimbalID_t GimbalID, float position);  
+void Gimbal_Send_UpDownAngle_DMA(float up_angle, float down_angle);
+void Gimbal_Transmit_Wait_DMA(void);
+void Gimbal_Transmit_Wait_EndofTransmit(void);
+void Gimbal_Send_Callback(void);
 
 #endif

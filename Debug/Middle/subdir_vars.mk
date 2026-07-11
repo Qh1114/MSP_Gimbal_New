@@ -8,6 +8,7 @@ SHELL = cmd.exe
 C_SRCS += \
 ../Middle/Bat.c \
 ../Middle/Buzzer.c \
+../Middle/Camera_Receive.c \
 ../Middle/Gimbal_Send.c \
 ../Middle/IMU.c \
 ../Middle/Key.c \
@@ -20,6 +21,7 @@ C_SRCS += \
 C_DEPS += \
 ./Middle/Bat.d \
 ./Middle/Buzzer.d \
+./Middle/Camera_Receive.d \
 ./Middle/Gimbal_Send.d \
 ./Middle/IMU.d \
 ./Middle/Key.d \
@@ -32,6 +34,7 @@ C_DEPS += \
 OBJS += \
 ./Middle/Bat.o \
 ./Middle/Buzzer.o \
+./Middle/Camera_Receive.o \
 ./Middle/Gimbal_Send.o \
 ./Middle/IMU.o \
 ./Middle/Key.o \
@@ -44,6 +47,7 @@ OBJS += \
 OBJS__QUOTED += \
 "Middle\Bat.o" \
 "Middle\Buzzer.o" \
+"Middle\Camera_Receive.o" \
 "Middle\Gimbal_Send.o" \
 "Middle\IMU.o" \
 "Middle\Key.o" \
@@ -56,6 +60,7 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "Middle\Bat.d" \
 "Middle\Buzzer.d" \
+"Middle\Camera_Receive.d" \
 "Middle\Gimbal_Send.d" \
 "Middle\IMU.d" \
 "Middle\Key.d" \
@@ -68,6 +73,7 @@ C_DEPS__QUOTED += \
 C_SRCS__QUOTED += \
 "../Middle/Bat.c" \
 "../Middle/Buzzer.c" \
+"../Middle/Camera_Receive.c" \
 "../Middle/Gimbal_Send.c" \
 "../Middle/IMU.c" \
 "../Middle/Key.c" \

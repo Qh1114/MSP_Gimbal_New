@@ -94,7 +94,8 @@ HardWare/Interrupt.o: ../HardWare/Interrupt.c \
  ../HardWare/icm42688.h C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Buzzer.h \
- C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/LED.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/LED.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Gimbal_Send.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -193,3 +194,4 @@ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/IMU.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/APP/Drive.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Buzzer.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/LED.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Gimbal_Send.h:

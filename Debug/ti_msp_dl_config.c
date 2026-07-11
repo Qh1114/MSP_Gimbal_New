@@ -63,6 +63,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_CAPTURE_0_init();
     SYSCFG_DL_TIMER_10ms_init();
     SYSCFG_DL_TIMER_2ms_init();
+    SYSCFG_DL_TIMER_100us_init();
     SYSCFG_DL_I2C_0_init();
     SYSCFG_DL_UART_init();
     SYSCFG_DL_UART_Gimbal_init();
@@ -125,6 +126,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_reset(CAPTURE_0_INST);
     DL_TimerG_reset(TIMER_10ms_INST);
     DL_TimerG_reset(TIMER_2ms_INST);
+    DL_TimerG_reset(TIMER_100us_INST);
     DL_I2C_reset(I2C_0_INST);
     DL_UART_Main_reset(UART_INST);
     DL_UART_Main_reset(UART_Gimbal_INST);
@@ -143,6 +145,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_enablePower(CAPTURE_0_INST);
     DL_TimerG_enablePower(TIMER_10ms_INST);
     DL_TimerG_enablePower(TIMER_2ms_INST);
+    DL_TimerG_enablePower(TIMER_100us_INST);
     DL_I2C_enablePower(I2C_0_INST);
     DL_UART_Main_enablePower(UART_INST);
     DL_UART_Main_enablePower(UART_Gimbal_INST);
@@ -673,9 +676,9 @@ SYSCONFIG_WEAK void SYSCFG_DL_CAPTURE_0_init(void) {
 
 
 /*
- * Timer clock configuration to be sourced by BUSCLK /  (5000000 Hz)
+ * Timer clock configuration to be sourced by BUSCLK /  (10000000 Hz)
  * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
- *   5000000 Hz = 5000000 Hz / (8 * (0 + 1))
+ *   10000000 Hz = 10000000 Hz / (8 * (0 + 1))
  */
 static const DL_TimerG_ClockConfig gTIMER_10msClockConfig = {
     .clockSel    = DL_TIMER_CLOCK_BUSCLK,
@@ -685,7 +688,7 @@ static const DL_TimerG_ClockConfig gTIMER_10msClockConfig = {
 
 /*
  * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
- * TIMER_10ms_INST_LOAD_VALUE = (10ms * 5000000 Hz) - 1
+ * TIMER_10ms_INST_LOAD_VALUE = (10ms * 10000000 Hz) - 1
  */
 static const DL_TimerG_TimerConfig gTIMER_10msTimerConfig = {
     .period     = TIMER_10ms_INST_LOAD_VALUE,
@@ -741,6 +744,44 @@ SYSCONFIG_WEAK void SYSCFG_DL_TIMER_2ms_init(void) {
     DL_TimerG_enableInterrupt(TIMER_2ms_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
 	NVIC_SetPriority(TIMER_2ms_INST_INT_IRQN, 2);
     DL_TimerG_enableClock(TIMER_2ms_INST);
+
+
+
+
+
+}
+
+/*
+ * Timer clock configuration to be sourced by BUSCLK /  (40000000 Hz)
+ * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
+ *   40000000 Hz = 40000000 Hz / (1 * (0 + 1))
+ */
+static const DL_TimerG_ClockConfig gTIMER_100usClockConfig = {
+    .clockSel    = DL_TIMER_CLOCK_BUSCLK,
+    .divideRatio = DL_TIMER_CLOCK_DIVIDE_1,
+    .prescale    = 0U,
+};
+
+/*
+ * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
+ * TIMER_100us_INST_LOAD_VALUE = (100us * 40000000 Hz) - 1
+ */
+static const DL_TimerG_TimerConfig gTIMER_100usTimerConfig = {
+    .period     = TIMER_100us_INST_LOAD_VALUE,
+    .timerMode  = DL_TIMER_TIMER_MODE_PERIODIC,
+    .startTimer = DL_TIMER_STOP,
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_TIMER_100us_init(void) {
+
+    DL_TimerG_setClockConfig(TIMER_100us_INST,
+        (DL_TimerG_ClockConfig *) &gTIMER_100usClockConfig);
+
+    DL_TimerG_initTimerMode(TIMER_100us_INST,
+        (DL_TimerG_TimerConfig *) &gTIMER_100usTimerConfig);
+    DL_TimerG_enableInterrupt(TIMER_100us_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
+	NVIC_SetPriority(TIMER_100us_INST_INT_IRQN, 1);
+    DL_TimerG_enableClock(TIMER_100us_INST);
 
 
 
@@ -842,6 +883,15 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_Gimbal_init(void)
     DL_UART_Main_setBaudRateDivisor(UART_Gimbal_INST, UART_Gimbal_IBRD_80_MHZ_115200_BAUD, UART_Gimbal_FBRD_80_MHZ_115200_BAUD);
 
 
+    /* Configure Interrupts */
+    DL_UART_Main_enableInterrupt(UART_Gimbal_INST,
+                                 DL_UART_MAIN_INTERRUPT_DMA_DONE_TX |
+                                 DL_UART_MAIN_INTERRUPT_EOT_DONE);
+    /* Setting the Interrupt Priority */
+    NVIC_SetPriority(UART_Gimbal_INST_INT_IRQN, 1);
+
+    /* Configure DMA Transmit Event */
+    DL_UART_Main_enableDMATransmitEvent(UART_Gimbal_INST);
 
     DL_UART_Main_enable(UART_Gimbal_INST);
 }
@@ -969,6 +1019,22 @@ SYSCONFIG_WEAK void SYSCFG_DL_BAT_ADC_init(void)
     DL_ADC12_enableConversions(BAT_ADC_INST);
 }
 
+static const DL_DMA_Config gDMA_CH1Config = {
+    .transferMode   = DL_DMA_SINGLE_TRANSFER_MODE,
+    .extendedMode   = DL_DMA_NORMAL_MODE,
+    .destIncrement  = DL_DMA_ADDR_UNCHANGED,
+    .srcIncrement   = DL_DMA_ADDR_INCREMENT,
+    .destWidth      = DL_DMA_WIDTH_BYTE,
+    .srcWidth       = DL_DMA_WIDTH_BYTE,
+    .trigger        = UART_Gimbal_INST_DMA_TRIGGER,
+    .triggerType    = DL_DMA_TRIGGER_TYPE_EXTERNAL,
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_DMA_CH1_init(void)
+{
+    DL_DMA_setTransferSize(DMA, DMA_CH1_CHAN_ID, 1);
+    DL_DMA_initChannel(DMA, DMA_CH1_CHAN_ID , (DL_DMA_Config *) &gDMA_CH1Config);
+}
 static const DL_DMA_Config gDMA_CH0Config = {
     .transferMode   = DL_DMA_FULL_CH_REPEAT_SINGLE_TRANSFER_MODE,
     .extendedMode   = DL_DMA_NORMAL_MODE,
@@ -986,6 +1052,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_DMA_CH0_init(void)
     DL_DMA_initChannel(DMA, DMA_CH0_CHAN_ID , (DL_DMA_Config *) &gDMA_CH0Config);
 }
 SYSCONFIG_WEAK void SYSCFG_DL_DMA_init(void){
+    SYSCFG_DL_DMA_CH1_init();
     SYSCFG_DL_DMA_CH0_init();
 }
 

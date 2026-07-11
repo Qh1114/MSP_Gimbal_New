@@ -1,7 +1,14 @@
 #include "Gimbal_Send.h"
 #include "Usart.h"
 
+#define GimbalCommandDelayTicks 5             // 延迟计数器，单位为100us
+
 static uint8_t GimbalCommandBuffer[10];
+static uint8_t GimbalCommandBuffer_Up[10];      // 上云台命令缓冲区
+static uint8_t GimbalCommandBuffer_Down[10];    // 下云台命令缓冲区
+volatile static GimbalTransmitState_t GimbalCommandcmd = GimbalTransmitState_Idle;      // 标记是否有云台命令正在等待发送
+volatile static uint8_t GimbalCommandTick = 0;     // 延迟计数器，用于延迟发送下云台命令，一个tick为100us，延迟5个tick即500us
+
 
 void Gimbal_Enable(GimbalID_t GimbalID) 
 {
@@ -40,6 +47,19 @@ void Gimbal_SetAcceleration(GimbalID_t GimbalID, uint16_t acceleration)
     Uart_Gimbal_Send_Command(GimbalCommandBuffer, 4);
 }
 
+//@简介：设置云台零点
+//@参数：GimbalID:云台ID
+//@注意：该命令会将当前云台位置设置为零点，之后的角度控制将以此为参考
+void Gimbal_SetZero(GimbalID_t GimbalID) 
+{
+    GimbalCommandBuffer[0] = GimbalID;
+    GimbalCommandBuffer[1] = 0x0A; 
+    Uart_Gimbal_Send_Command(GimbalCommandBuffer, 2);
+}
+
+//@简介：保存云台设置
+//@参数：GimbalID:云台ID
+//@注意：该命令会将当前云台的设置保存到非易失性存储器中，断电后仍然有效
 void Gimbal_SaveSettings(GimbalID_t GimbalID) 
 {
     GimbalCommandBuffer[0] = GimbalID;
@@ -94,4 +114,76 @@ void Gimbal_SingleTurnMove(GimbalID_t GimbalID, float position)
     GimbalCommandBuffer[2] = positionHigh;
     GimbalCommandBuffer[3] = positionLow;
     Uart_Gimbal_Send_Command(GimbalCommandBuffer, 4);
+}
+
+//@简介：云台单圈模式移动，使用DMA发送
+//@参数：GimbalID:云台ID
+//@参数：position:目标位置，单位为度
+//@注意：position的范围为0-359.9度
+//@注意：该函数会在发送上云台命令后，延迟一段时间再发送下云台命令，以确保上云台命令先被处理
+void Gimbal_Send_UpDownAngle_DMA(float up_angle, float down_angle)
+{
+    if(GimbalCommandcmd != GimbalTransmitState_Idle) return; // 如果当前有命令正在发送，则直接返回
+    
+    uint16_t positionValue = (uint16_t)(up_angle * 10); // 将位置转换为整数表示，保留一位小数
+    GimbalCommandBuffer_Up[0] = GimbalID_Up;
+    GimbalCommandBuffer_Up[1] = 0x03; 
+    uint8_t positionLow = positionValue & 0xFF;    
+    uint8_t positionHigh = (positionValue >> 8) & 0xFF;
+    GimbalCommandBuffer_Up[2] = positionHigh;
+    GimbalCommandBuffer_Up[3] = positionLow;
+    Uart_Gimbal_Send_Command_DMA(GimbalCommandBuffer_Up, 4);
+
+    GimbalCommandTick = GimbalCommandDelayTicks; // 设置延迟计数器
+    GimbalCommandcmd = GimbalTransmitState_Up_DMAMove;
+
+    positionValue = (uint16_t)(down_angle * 10); // 将位置转换为整数表示，保留一位小数
+    GimbalCommandBuffer_Down[0] = GimbalID_Under;
+    GimbalCommandBuffer_Down[1] = 0x03;
+    uint8_t positionLow_Down = positionValue & 0xFF;
+    uint8_t positionHigh_Down = (positionValue >> 8) & 0xFF;
+    GimbalCommandBuffer_Down[2] = positionHigh_Down;
+    GimbalCommandBuffer_Down[3] = positionLow_Down;
+    //Uart_Gimbal_Send_Command_DMA(GimbalCommandBuffer_Down, 4);
+}
+
+//@简介：云台dma发送完成后，调用该函数延时发送下云台命令
+void Gimbal_Transmit_Wait_DMA(void)
+{
+    if(GimbalCommandcmd == GimbalTransmitState_Up_DMAMove)
+    {
+        GimbalCommandcmd = GimbalTransmitState_Up_WaitEndofTransmit;
+    }else if(GimbalCommandcmd == GimbalTransmitState_Down_DMAMove)
+    {
+        GimbalCommandcmd = GimbalTransmitState_Down_WaitEndofTransmit;
+    }
+}
+
+//@简介：云台dma发送完成后，调用该函数延时发送下云台命令
+void Gimbal_Transmit_Wait_EndofTransmit(void)
+{
+    if(GimbalCommandcmd == GimbalTransmitState_Up_WaitEndofTransmit)
+    {
+        GimbalCommandcmd = GimbalTransmitState_Up_EndofTransmit;
+    }else if(GimbalCommandcmd == GimbalTransmitState_Down_WaitEndofTransmit)
+    {
+        GimbalCommandcmd = GimbalTransmitState_Idle;
+    }
+}
+
+//@简介：云台dma发送回调函数，用于延迟发送下云台命令
+void Gimbal_Send_Callback(void)
+{
+    if(GimbalCommandcmd == GimbalTransmitState_Up_EndofTransmit)
+    {
+        if(GimbalCommandTick > 0)
+        {
+            GimbalCommandTick--;
+            if(GimbalCommandTick == 0)
+            {
+                Uart_Gimbal_Send_Command_DMA(GimbalCommandBuffer_Down, 4);
+                GimbalCommandcmd = GimbalTransmitState_Down_DMAMove;
+            }
+        }
+    }
 }

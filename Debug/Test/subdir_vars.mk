@@ -8,6 +8,7 @@ SHELL = cmd.exe
 C_SRCS += \
 ../Test/ADC_Test.c \
 ../Test/Buzzer_Test.c \
+../Test/Camera_Test.c \
 ../Test/Drive_Test.c \
 ../Test/Encoder_Test.c \
 ../Test/Gimbal_Test.c \
@@ -26,6 +27,7 @@ C_SRCS += \
 C_DEPS += \
 ./Test/ADC_Test.d \
 ./Test/Buzzer_Test.d \
+./Test/Camera_Test.d \
 ./Test/Drive_Test.d \
 ./Test/Encoder_Test.d \
 ./Test/Gimbal_Test.d \
@@ -44,6 +46,7 @@ C_DEPS += \
 OBJS += \
 ./Test/ADC_Test.o \
 ./Test/Buzzer_Test.o \
+./Test/Camera_Test.o \
 ./Test/Drive_Test.o \
 ./Test/Encoder_Test.o \
 ./Test/Gimbal_Test.o \
@@ -62,6 +65,7 @@ OBJS += \
 OBJS__QUOTED += \
 "Test\ADC_Test.o" \
 "Test\Buzzer_Test.o" \
+"Test\Camera_Test.o" \
 "Test\Drive_Test.o" \
 "Test\Encoder_Test.o" \
 "Test\Gimbal_Test.o" \
@@ -80,6 +84,7 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "Test\ADC_Test.d" \
 "Test\Buzzer_Test.d" \
+"Test\Camera_Test.d" \
 "Test\Drive_Test.d" \
 "Test\Encoder_Test.d" \
 "Test\Gimbal_Test.d" \
@@ -98,6 +103,7 @@ C_DEPS__QUOTED += \
 C_SRCS__QUOTED += \
 "../Test/ADC_Test.c" \
 "../Test/Buzzer_Test.c" \
+"../Test/Camera_Test.c" \
 "../Test/Drive_Test.c" \
 "../Test/Encoder_Test.c" \
 "../Test/Gimbal_Test.c" \
