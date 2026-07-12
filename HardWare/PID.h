@@ -21,6 +21,7 @@ void PID_Init(PIDController* pid, float kp, float ki, float kd);
 void PID_SetLimit(PIDController* pid, float Max_out, float Min_out, float Max_integral, float Min_integral);
 void PID_SetGoal(PIDController* pid, float goal);
 float PID_Compute(PIDController* pid, float error);
+float PID_Detect_Line_Compute(PIDController *pid, float error);
 void PID_Reset(PIDController* pid);
 void PID_SetK(PIDController* pid, float kp, float ki, float kd);
 

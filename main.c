@@ -50,13 +50,15 @@
 #include "Gimbal_Test.h"
 #include "Camera_Test.h"
 #include "Key_Test.h"
+#include "Follow_Line_Test.h"
+#include "Grayscale_Test.h"
 // uint8_t Buffer[256];
 
 int main(void)
 {
     SYSCFG_DL_init();
 
-    Menu_Gimbal_Pre();
+    //Menu_Gimbal_Pre();
     
     Key_Init();
     Uart_Init();
@@ -74,8 +76,11 @@ int main(void)
     NVIC_EnableIRQ(TIMER_100us_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_100us_INST);
 
-    Key_Test();
-    Gimbal_Test6();
+    //Grayscale_Test2();
+    //Follow_Line_Test1();
+    Follow_Line_Test2();
+    //Key_Test();
+    //Gimbal_Test6();
     //Gimbal_Test5();
     //Gimbal_Test4();
     //Gimbal_Test3();

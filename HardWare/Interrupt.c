@@ -14,6 +14,7 @@
 #include "Buzzer.h"
 #include "LED.h"
 #include "Gimbal_Send.h"
+#include "Follow_Line.h"
 
 void GROUP1_IRQHandler(void)
 {
@@ -62,17 +63,13 @@ void GROUP1_IRQHandler(void)
 
 }
 
-//uint64_t start_time = 0, end_time = 0;
 void TIMER_10ms_INST_IRQHandler(void)
 {
-    ////start_time = Get_us();
     Bat_Callback();
     Drive_Callback();
     button_ticks();
-    Grayscale_Callback();
-    //count++;
-    //end_time = Get_us();
-    //Uart0_Printf("10ms Callback Time: %u us\n", (uint32_t)(end_time - start_time));
+    Follow_Line_Callback();
+    //Grayscale_Callback();
 }
 
 void TIMER_2ms_INST_IRQHandler(void)

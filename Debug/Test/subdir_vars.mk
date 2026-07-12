@@ -11,6 +11,7 @@ C_SRCS += \
 ../Test/Camera_Test.c \
 ../Test/Drive_Test.c \
 ../Test/Encoder_Test.c \
+../Test/Follow_Line_Test.c \
 ../Test/Gimbal_Test.c \
 ../Test/Grayscale_Test.c \
 ../Test/ICM_Test.c \
@@ -30,6 +31,7 @@ C_DEPS += \
 ./Test/Camera_Test.d \
 ./Test/Drive_Test.d \
 ./Test/Encoder_Test.d \
+./Test/Follow_Line_Test.d \
 ./Test/Gimbal_Test.d \
 ./Test/Grayscale_Test.d \
 ./Test/ICM_Test.d \
@@ -49,6 +51,7 @@ OBJS += \
 ./Test/Camera_Test.o \
 ./Test/Drive_Test.o \
 ./Test/Encoder_Test.o \
+./Test/Follow_Line_Test.o \
 ./Test/Gimbal_Test.o \
 ./Test/Grayscale_Test.o \
 ./Test/ICM_Test.o \
@@ -68,6 +71,7 @@ OBJS__QUOTED += \
 "Test\Camera_Test.o" \
 "Test\Drive_Test.o" \
 "Test\Encoder_Test.o" \
+"Test\Follow_Line_Test.o" \
 "Test\Gimbal_Test.o" \
 "Test\Grayscale_Test.o" \
 "Test\ICM_Test.o" \
@@ -87,6 +91,7 @@ C_DEPS__QUOTED += \
 "Test\Camera_Test.d" \
 "Test\Drive_Test.d" \
 "Test\Encoder_Test.d" \
+"Test\Follow_Line_Test.d" \
 "Test\Gimbal_Test.d" \
 "Test\Grayscale_Test.d" \
 "Test\ICM_Test.d" \
@@ -106,6 +111,7 @@ C_SRCS__QUOTED += \
 "../Test/Camera_Test.c" \
 "../Test/Drive_Test.c" \
 "../Test/Encoder_Test.c" \
+"../Test/Follow_Line_Test.c" \
 "../Test/Gimbal_Test.c" \
 "../Test/Grayscale_Test.c" \
 "../Test/ICM_Test.c" \

@@ -99,7 +99,9 @@ main.o: ../main.c \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/vl53l1x_Test.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/ICM_Test.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Camera_Test.h \
- C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Key_Test.h
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Key_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Follow_Line_Test.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Grayscale_Test.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -199,3 +201,5 @@ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/vl53l1x_Test.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/ICM_Test.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Camera_Test.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Key_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Follow_Line_Test.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Test/Grayscale_Test.h:

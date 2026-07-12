@@ -64,6 +64,7 @@ void Motor_Stop(void)
     cmd_right_speed = false;
     TB6612_SetLeftMotor(0.0f);
     TB6612_SetRightMotor(0.0f);
+    TB6612_Brake();
 }
 
 void Motor_Start(void)
