@@ -7,6 +7,7 @@
 #include "Usart.h"
 #include "Key.h"
 #include <stdio.h>
+#include "spi.h"
 void Drive_Test1(void)
 {
     Uart0_Printf("Drive Test1\n");
@@ -36,7 +37,7 @@ bool pid_mode = false;
 uint8_t menu_index = 0;
 float Kp_Step = 1.0f, Ki_Step = 0.01f, Kd_Step = 0.01f;
 uint8_t Goal_Angle_Step = 10;
-uint8_t set_state = 1;      //0:Striaght;1:Turn
+uint8_t set_state = 2;      //0:Striaght;1:Turn;2:Turn_During_Motion
 
 static void Drive_Test_Set(void)
 {
@@ -92,11 +93,17 @@ static void Drive_Test_Set(void)
                     break;
             }
         }else if(key_num == 3) {
-            if(set_state)
+            if(set_state == 1)
             {
                 Drive_Turn_SetK(Kp, Ki, Kd);
-            }else {
+            }
+            else if(set_state == 0)
+            {
                 Drive_Straight_SetK(Kp, Ki, Kd);
+            }
+            else if(set_state == 2)
+            {
+                Drive_Turn_During_Motion_SetK(Kp, Ki, Kd);
             }
             return;
         }
@@ -142,8 +149,10 @@ static void Drive_Test_Set(void)
 
     }
 }
+//@简介：测试直线行驶和原地转向PID参数设置
 void Drive_Test3(void)
 {
+    SPI_Init();
     OLED_Init();
     Drive_Init();
     uint8_t Key_Num = 0;
@@ -173,11 +182,15 @@ void Drive_Test3(void)
         }else if(Key_Num == 4) {
             if(!pid_mode) {
                 pid_mode = true;
-                if(!set_state)
+                if(set_state == 0)
                 {
                     Drive_Straight(700.0f, Goal_Angle);
-                }else {
+                }else if(set_state == 1)
+                {
                     Drive_Turn(Goal_Angle);
+                }else if(set_state == 2)
+                {
+                    Drive_Turn_During_Motion(Goal_Angle, 700.0f);
                 }
             }else {
                 pid_mode = false;

@@ -16,6 +16,7 @@ C_SRCS += \
 ../Middle/Motor.c \
 ../Middle/Servo.c \
 ../Middle/Uart_Data.c \
+../Middle/Wireless_Command.c \
 ../Middle/my_vl53l1x.c 
 
 C_DEPS += \
@@ -29,6 +30,7 @@ C_DEPS += \
 ./Middle/Motor.d \
 ./Middle/Servo.d \
 ./Middle/Uart_Data.d \
+./Middle/Wireless_Command.d \
 ./Middle/my_vl53l1x.d 
 
 OBJS += \
@@ -42,6 +44,7 @@ OBJS += \
 ./Middle/Motor.o \
 ./Middle/Servo.o \
 ./Middle/Uart_Data.o \
+./Middle/Wireless_Command.o \
 ./Middle/my_vl53l1x.o 
 
 OBJS__QUOTED += \
@@ -55,6 +58,7 @@ OBJS__QUOTED += \
 "Middle\Motor.o" \
 "Middle\Servo.o" \
 "Middle\Uart_Data.o" \
+"Middle\Wireless_Command.o" \
 "Middle\my_vl53l1x.o" 
 
 C_DEPS__QUOTED += \
@@ -68,6 +72,7 @@ C_DEPS__QUOTED += \
 "Middle\Motor.d" \
 "Middle\Servo.d" \
 "Middle\Uart_Data.d" \
+"Middle\Wireless_Command.d" \
 "Middle\my_vl53l1x.d" 
 
 C_SRCS__QUOTED += \
@@ -81,6 +86,7 @@ C_SRCS__QUOTED += \
 "../Middle/Motor.c" \
 "../Middle/Servo.c" \
 "../Middle/Uart_Data.c" \
+"../Middle/Wireless_Command.c" \
 "../Middle/my_vl53l1x.c" 
 
 

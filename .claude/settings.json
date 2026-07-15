@@ -8,7 +8,11 @@
       "Read(//c/Users/Qh/**)",
       "WebFetch(domain:)",
       "Read(//d/TI/mspm0_sdk_2_02_00_05/docs/chinese/driverlib/mspm0g1x0x_g3x0x_api_guide/html/**)",
-      "Read(//d/TI/mspm0_sdk_2_02_00_05/**)"
+      "Read(//d/TI/mspm0_sdk_2_02_00_05/**)",
+      "Read(//c/Users/Qh/Desktop/Car_F4/**)",
+      "mcp__local-tools__list_directory",
+      "Read(//c/Users/Qh/Desktop/新建文件夹 \\\\\\(2\\\\\\)/**)",
+      "Read(//c/Users/Qh/Desktop/**)"
     ]
   }
 }

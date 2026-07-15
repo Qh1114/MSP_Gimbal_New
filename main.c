@@ -58,7 +58,7 @@ int main(void)
 {
     SYSCFG_DL_init();
 
-    //Menu_Gimbal_Pre();
+    Menu_Gimbal_Pre();
     
     Key_Init();
     Uart_Init();
@@ -91,7 +91,7 @@ int main(void)
     //LED_Test1();
     //Buzzer_Test2();
     //Buzzer_Test1();
-    //Drive_Test3();
+    Drive_Test3();
     //Encoder_Test3();
     //TB6612_Test1();
     //Motor_Test3();

@@ -1,5 +1,6 @@
 #include "ti_msp_dl_config.h"
 #include "Menu_Gimbal.h"
+#include "Delay.h"
 #include "Key.h"
 #include "Usart.h"
 #include "OLED.h"
@@ -102,6 +103,10 @@ void Menu_Gimbal_SetZero(void)
                         Delay_ms(1);
                         Gimbal_SetZero(GimbalID_Under);
                         Delay_ms(1);
+                        Gimbal_SaveSettings(GimbalID_Up);
+                        Delay_ms(2);
+                        Gimbal_SaveSettings(GimbalID_Under);
+                        Delay_ms(2);
                         break;
                     case 2:
                         cmd = !cmd;
@@ -114,9 +119,9 @@ void Menu_Gimbal_SetZero(void)
                             Delay_ms(2);
                             Gimbal_SetMode(GimbalID_Under, GimbalMode_Signal_Turn_T);
                             Delay_ms(2);
-                            Gimbal_SetSpeed(GimbalID_Up, 100);
+                            Gimbal_SetSpeed(GimbalID_Up, 150);
                             Delay_ms(2);
-                            Gimbal_SetSpeed(GimbalID_Under, 100);
+                            Gimbal_SetSpeed(GimbalID_Under, 150);
                             Delay_ms(2);
                             Gimbal_SingleTurnMove(GimbalID_Up, 0.0f);
                             Delay_ms(2);

@@ -13,12 +13,13 @@ void Follow_Line_Init(void)
 {
     follow_line_cmd = false;
     PID_Init(&PID_Line, 0.5f, 0.1f, 0.05f); // 初始化PID参数
-    PID_SetLimit(&PID_Line, 100.0f, -100.0f, 50.0f, -50.0f); // 设置PID输出和积分限制
+    PID_SetLimit(&PID_Line, 360.0f, -360.0f, 200.0f, -200.0f); // 设置PID输出和积分限制
     follow_line_speed = 300.0f; // 设置巡线速度
 }
 
 void Follow_Start(void)
 {
+    PID_Reset(&PID_Line);
     follow_line_cmd = true;
     Motor_Start();
 }
@@ -48,7 +49,7 @@ static float calculate_error(uint16_t* sensor_values)
 
     // 如果没有检测到线，返回上次偏差（丢线处理）
     if (active_sensors == 0) {
-        return PID_Line.last_error *1.5f; // 增大丢线时的偏差，增加回线力度
+        return PID_Line.last_error * 1.2f; // 增大丢线时的偏差，增加回线力度
     }
 
     // 计算加权平均偏差

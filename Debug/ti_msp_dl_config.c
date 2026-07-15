@@ -916,12 +916,18 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_WIRELESS_init(void)
     DL_UART_Main_init(UART_WIRELESS_INST, (DL_UART_Main_Config *) &gUART_WIRELESSConfig);
     /*
      * Configure baud rate by setting oversampling and baud rate divisors.
-     *  Target baud rate: 9600
-     *  Actual baud rate: 9599.81
+     *  Target baud rate: 115200
+     *  Actual baud rate: 115190.78
      */
     DL_UART_Main_setOversampling(UART_WIRELESS_INST, DL_UART_OVERSAMPLING_RATE_16X);
-    DL_UART_Main_setBaudRateDivisor(UART_WIRELESS_INST, UART_WIRELESS_IBRD_40_MHZ_9600_BAUD, UART_WIRELESS_FBRD_40_MHZ_9600_BAUD);
+    DL_UART_Main_setBaudRateDivisor(UART_WIRELESS_INST, UART_WIRELESS_IBRD_40_MHZ_115200_BAUD, UART_WIRELESS_FBRD_40_MHZ_115200_BAUD);
 
+
+    /* Configure Interrupts */
+    DL_UART_Main_enableInterrupt(UART_WIRELESS_INST,
+                                 DL_UART_MAIN_INTERRUPT_RX);
+    /* Setting the Interrupt Priority */
+    NVIC_SetPriority(UART_WIRELESS_INST_INT_IRQN, 2);
 
 
     DL_UART_Main_enable(UART_WIRELESS_INST);

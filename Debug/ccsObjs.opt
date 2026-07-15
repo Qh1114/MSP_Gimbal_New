@@ -43,6 +43,7 @@
 "./Middle/Motor.o"
 "./Middle/Servo.o"
 "./Middle/Uart_Data.o"
+"./Middle/Wireless_Command.o"
 "./Middle/my_vl53l1x.o"
 "./Middle/Fusion/FusionAhrs.o"
 "./Middle/Fusion/FusionBias.o"

@@ -84,11 +84,12 @@ Task/Menu_Gimbal.o: ../Task/Menu_Gimbal.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- ../Task/Menu_Gimbal.h C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h \
+ ../Task/Menu_Gimbal.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/OLED.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/spi.h \
- C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Bat.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Gimbal_Send.h \
  C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Camera_Receive.h
@@ -176,11 +177,11 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 ../Task/Menu_Gimbal.h:
+C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Key.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Usart.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/OLED.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/spi.h:
-C:/Users/Qh/Desktop/ccs2/MSP_Car_1/HardWare/Delay.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Bat.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Gimbal_Send.h:
 C:/Users/Qh/Desktop/ccs2/MSP_Car_1/Middle/Camera_Receive.h:

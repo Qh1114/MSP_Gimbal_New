@@ -16,7 +16,7 @@ void Grayscale_Sensor_Read_All(uint16_t* sensor_values)
     for (i = 0; i < GRAYSCALE_SENSOR_CHANNELS; i++)
     {
         select_channel(i);
-        delay_us(1);
+        delay_us(5);
         sensor_values[i] = Read_OUT_value();
     }
 }

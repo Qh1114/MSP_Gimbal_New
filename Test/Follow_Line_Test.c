@@ -67,9 +67,11 @@ void Follow_Line_Test2(void)
         switch(key)
         {
             case 1:
+                OLED_Refresh_Flag = true;
                 menu_index = (menu_index + 1) % 4;
                 break;
             case 2:
+                OLED_Refresh_Flag = true;
                 menu_index = (menu_index + 3) % 4;
                 break;
             case 3:
@@ -126,6 +128,7 @@ void Follow_Line_Test2(void)
         
         if (OLED_Refresh_Flag)
         {
+            OLED_Refresh_Flag = false;
             OLED_Clear();
             for (int i = 0; i < 4; i++)
             {

@@ -56,6 +56,10 @@ void Uart_Init(void)
     (void)DL_UART_Main_receiveData(UART_CAMERA_INST);
     NVIC_EnableIRQ(UART_CAMERA_INST_INT_IRQN);
 
+    NVIC_ClearPendingIRQ(UART_WIRELESS_INST_INT_IRQN);
+    (void)DL_UART_Main_receiveData(UART_WIRELESS_INST);
+    NVIC_EnableIRQ(UART_WIRELESS_INST_INT_IRQN);
+
     DL_DMA_setSrcAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t)(&UART_CAMERA_INST->RXDATA));
     DL_DMA_setDestAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t) &CameraCommandBuffer[0]);
     DL_DMA_setTransferSize(DMA, DMA_CH0_CHAN_ID, BufferSize);
@@ -465,6 +469,46 @@ void UART_CAMERA_INST_IRQHandler(void)
     {
         case DL_UART_MAIN_IIDX_DMA_DONE_RX:
             CommandCount++;
+            break;
+        default:
+            break;
+    }
+}
+
+//--------------------------------无线串口代码-------------------------------------------//
+void Uart_Wireless_Send_Char(char ch)
+{
+    while(DL_UART_isBusy(UART_WIRELESS_INST) == true);
+    DL_UART_Main_transmitData(UART_WIRELESS_INST, ch);
+}
+
+void Uart_Wireless_Send_String(char* str)
+{
+    while(str!=0 && *str!=0)
+    {
+        Uart_Wireless_Send_Char(*str++);
+    }
+}
+
+void Uart_Wireless_Printf(const char* format, ...)
+{
+    char tmp[128];
+    va_list argptr;
+
+    va_start(argptr, format);
+    vsnprintf(tmp, sizeof(tmp) - 1, format, argptr);
+    va_end(argptr);
+
+    Uart_Wireless_Send_String(tmp);
+}
+
+void UART_WIRELESS_INST_IRQHandler(void)
+{
+    switch( DL_UART_getPendingInterrupt(UART_WIRELESS_INST) )
+    {
+        case DL_UART_IIDX_RX:
+            data = DL_UART_Main_receiveData(UART_WIRELESS_INST);
+            //Uart_Wireless_Send_Char(data); // 将接收到的数据发送到主串口
             break;
         default:
             break;

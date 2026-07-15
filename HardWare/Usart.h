@@ -19,5 +19,9 @@ void Uart_Camera_Printf(const char* format, ...);
 void Uart_Camera_Send_Command(uint8_t funcCode, const uint8_t* data, uint8_t len);
 void Uart_Camera_Get_Command_Count(uint32_t* count, uint32_t* index);
 void Uart_Camera_ProcessDmaBuffer(void);
+
+void Uart_Wireless_Send_Char(char ch);
+void Uart_Wireless_Send_String(char* str);
+void Uart_Wireless_Printf(const char* format, ...);
     
 #endif

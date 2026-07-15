@@ -452,6 +452,9 @@ UART2.DMA_CHANNEL_TX.configureTransferSize = true;
 UART2.DMA_CHANNEL_TX.$name                 = "DMA_CH1";
 
 UART3.$name                            = "UART_WIRELESS";
+UART3.enabledInterrupts                = ["RX"];
+UART3.interruptPriority                = "2";
+UART3.targetBaudRate                   = 115200;
 UART3.peripheral.$assign               = "UART1";
 UART3.peripheral.rxPin.$assign         = "PB5";
 UART3.peripheral.txPin.$assign         = "PB4";
